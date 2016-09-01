@@ -1,4 +1,4 @@
-const foo = 'bar';
+const foo = 'foo';
 if (foo) {
     console.log(foo);
 }

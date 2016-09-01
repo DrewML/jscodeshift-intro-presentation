@@ -1,0 +1,3 @@
+<Element fontSize="11px" otherProp="12">
+	<OtherElement fontSize="100px"></OtherElement>
+</Element>

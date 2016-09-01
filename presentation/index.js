@@ -14,6 +14,7 @@ import {
 } from "spectacle";
 import preloader from "spectacle/lib/utils/preloader";
 import createTheme from "spectacle/lib/themes/default";
+import CodeSlide from 'spectacle-code-slide';
 import "normalize.css";
 import "spectacle/lib/themes/default/index.css";
 
@@ -64,7 +65,7 @@ export default class Presentation extends Component {
           </Slide>
 
           <Slide transition={["slide"]} bgColor="primary" notes="You can even put notes on your slide. How awesome is that?">
-            <Image src={images.mindblown.replace("/", "")} margin="0px auto 40px" height="293px"/>
+            <Image src={images.mindblown.replace("/", "")} margin="0px auto 40px" height="700px" width="700px" />
           </Slide>
 
           <Slide transition={["slide"]} bgColor="primary">
@@ -119,6 +120,20 @@ export default class Presentation extends Component {
               <Image src={images.foobar} width={600} height={600} />
           </Slide>
 
+          <CodeSlide
+            lang="js"
+            transition={[]}
+            code={require("raw!../assets/base-codemod.example")}
+            ranges={[
+                { loc: [0, 0], title: "Anatomy of a codemod" },
+                { loc: [0, 1], title: "Signature" },
+                { loc: [1, 2], title: "The Magical `j`" },
+                { loc: [3, 4], title: "Parsing" },
+                { loc: [5, 6], title: "Mutate away" },
+                { loc: [7, 8], title: "Serialize and return" }
+            ]}
+          />
+
           <Slide>
               <Heading size={1} textColor="secondary" lineHeight={1.5} fit>
                   Baby's First Codemod
@@ -139,6 +154,56 @@ export default class Presentation extends Component {
                 source={require("raw!../assets/foo-input.example")}
                 textSize={30}
               />
+          </Slide>
+
+          <CodeSlide
+            lang="js"
+            transition={[]}
+            code={require("raw!../assets/foobar-codemod.example")}
+            ranges={[
+                { loc: [0, 1], title: "Signature" },
+                { loc: [1, 2], title: "Our favorite `j`" },
+                { loc: [3, 4], title: "Parse" },
+                { loc: [4, 5], title: "Find Target Variables" },
+                { loc: [5, 6], title: "Replacement + Builder" },
+                { loc: [6, 7], title: "Serialize" }
+            ]}
+          />
+
+          <Slide>
+              <Heading size={1} textColor="secondary" lineHeight={1.5} fit>
+                  Baby's First Codemod (continued)
+              </Heading>
+              <CodePane
+                lang="js"
+                source={require("raw!../assets/foo-output.example")}
+                textSize={30}
+              />
+          </Slide>
+
+          <Slide>
+              <Heading size={1} textColor="secondary" lineHeight={1.5} fit>
+                  Codemod #2
+              </Heading>
+              <List>
+                  <Appear>
+                    <ListItem>
+                        Find all JSX elements named <Code textColor="#ccc">Element</Code>
+                    </ListItem>
+                  </Appear>
+                  <Appear>
+                    <ListItem>
+                        Find prop on each <Code textColor="#ccc">Element</Code>
+                        with a prop named <Code textColor="#ccc">fontSize</Code>
+                    </ListItem>
+                  </Appear>
+                  <Appear>
+                    <ListItem>
+                        If <Code textColor="#ccc">fontSize</Code> is numeric,
+                        append <Code textColor="#ccc">px</Code> to the value
+                    </ListItem>
+                  </Appear>
+              </List>
           </Slide>
         </Deck>
       </Spectacle>

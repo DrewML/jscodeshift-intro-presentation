@@ -1,0 +1,13 @@
+export default function transformer(file, api) {
+  const j = api.jscodeshift;
+
+  return j(file.source)
+  	.find(j.JSXOpeningElement, { name: { name: 'Element' } })
+    .find(j.JSXAttribute, { name: { name: 'fontSize' } })
+  	.forEach(p => {
+    	const { value } = p.node;
+    	const isNumber = !Number.isNaN(+value.value);
+    	if (isNumber) value.value = `${value.value}px`;
+    })
+    .toSource();
+};
