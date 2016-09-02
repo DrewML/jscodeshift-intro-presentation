@@ -22,7 +22,8 @@ const images = {
     mindblown: require("../assets/mindblown.gif"),
     astexplorer: require("../assets/astexplorer.png"),
     wat: require("../assets/wat.gif"),
-    foobar: require("../assets/foobarast.png")
+    foobar: require("../assets/foobarast.png"),
+    questions: require("../assets/questions.gif")
 };
 
 preloader(images);
@@ -66,6 +67,20 @@ export default class Presentation extends Component {
 
           <Slide transition={["slide"]} bgColor="primary" notes="You can even put notes on your slide. How awesome is that?">
             <Image src={images.mindblown.replace("/", "")} margin="0px auto 40px" height="700px" width="700px" />
+          </Slide>
+
+          <Slide transition={["slide"]} bgColor="primary">
+              <Heading size={1} fit textColor="secondary" caps>
+                  Usage of Codemods @ Spredfast
+              </Heading>
+
+              <List>
+                <Appear><ListItem>Migration from QUnit to Mocha/Chai</ListItem></Appear>
+                <Appear><ListItem>Migration of runtime libs (Redux `connect` helper to pure `connect`)</ListItem></Appear>
+                <Appear><ListItem>Reselect createSelector >> createStructuredSelector</ListItem></Appear>
+                <Appear><ListItem>react-lib Button component updates</ListItem></Appear>
+                <Appear><ListItem>Upcoming: Skin-Deep >> Enzyme</ListItem></Appear>
+              </List>
           </Slide>
 
           <Slide transition={["slide"]} bgColor="primary">
@@ -204,6 +219,61 @@ export default class Presentation extends Component {
                     </ListItem>
                   </Appear>
               </List>
+          </Slide>
+
+          <Slide>
+              <Heading size={1} textColor="secondary" lineHeight={1.5} fit>
+                  Codemod #2 (continued)
+              </Heading>
+              <CodePane
+                lang="js"
+                source={require("raw!../assets/jsx-font-input.example")}
+                textSize={30}
+              />
+          </Slide>
+
+          <CodeSlide
+            lang="js"
+            textSize="27px"
+            transition={[]}
+            code={require("raw!../assets/jsx-font-codemod.example")}
+            ranges={[
+                { loc: [3, 4], title: "Parse" },
+                { loc: [4, 9], title: "Find JSX Element Parent" },
+                { loc: [9, 13], title: "Find fontSize prop" },
+                { loc: [13, 20], title: "Mutate the prop" },
+                { loc: [20, 21], title: "Serialize" }
+            ]}
+          />
+
+          <Slide>
+              <Heading size={1} textColor="secondary" lineHeight={1.5} fit>
+                  Codemod #2 (continued)
+              </Heading>
+              <CodePane
+                lang="js"
+                source={require("raw!../assets/jsx-font-output.example")}
+                textSize={30}
+              />
+          </Slide>
+          <Slide>
+              <Heading size={1} textColor="secondary" lineHeight={1.5} fit>
+                  Where to find examples?
+              </Heading>
+              <List>
+                <Appear><ListItem>https://github.com/reactjs/react-codemod</ListItem></Appear>
+                <Appear><ListItem>https://github.com/cpojer/js-codemod/</ListItem></Appear>
+                <Appear><ListItem>https://github.com/DrewML/codemods</ListItem></Appear>
+                <Appear><ListItem>https://github.com/5to6/5to6-codemod</ListItem></Appear>
+                <Appear><ListItem>https://github.com/avajs/ava-codemods</ListItem></Appear>
+              </List>
+          </Slide>
+
+          <Slide>
+              <Heading size={1} textColor="secondary" lineHeight={1.5}>
+                  Questions?
+              </Heading>
+              <Image src={images.questions} width="800px" height="500px" />
           </Slide>
         </Deck>
       </Spectacle>

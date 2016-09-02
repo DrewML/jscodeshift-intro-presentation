@@ -3,6 +3,6 @@ export default function transformer(file, api) {
 
   return j(file.source)
     .find(j.Identifier, { name: 'foo' })
-    .replaceWith(j.identifier('bar'))
+    .replaceWith(j.identifier('boo'))
     .toSource();
 };
